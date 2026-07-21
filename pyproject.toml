@@ -1,0 +1,42 @@
+[tool.poetry]
+name = "rag-cli-demo"
+version = "0.1.0"
+description = "Educational RAG pipeline in the terminal"
+authors = ["Jaroslaw Swierek <6208936+jarekswierek@users.noreply.github.com>"]
+readme = "README.md"
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "^3.14"
+pypdf = "^6.14.2"
+anthropic = "^0.117.0"
+chromadb = "^1.5.9"
+python-dotenv = "^1.2.1"
+
+[tool.poetry.group.dev.dependencies]
+black = "^25.11.0"
+ruff = "^0.15.22"
+mypy = "^1.19.1"
+docformatter = "^1.7.7"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 81
+
+[tool.ruff]
+line-length = 81
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+ignore = ["E501", "B008"]
+
+[tool.mypy]
+strict = true
+python_version = "3.14"
+
+[tool.docformatter]
+wrap-summaries = 81
+wrap-descriptions = 81

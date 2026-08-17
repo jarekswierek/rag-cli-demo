@@ -1,6 +1,6 @@
 # rag-cli-demo
 
-> **Work in progress.** `ingest.py` (PDF parsing, chunking, embedding, and storage in ChromaDB) is in progress. `ask.py` (query pipeline with citations) is not yet implemented.
+> **Work in progress.** `ingest.py` (PDF parsing, chunking, embedding, and storage in ChromaDB) is completed. `ask.py` (query pipeline with citations) is not yet implemented.
 
 An educational example of a Retrieval-Augmented Generation (RAG) pipeline in the terminal.
 
@@ -13,6 +13,7 @@ RAG is a pattern where a language model answers questions using text retrieved f
 - Python 3.14+
 - [Poetry](https://python-poetry.org/docs/#installation)
 - Anthropic API key — get one at [console.anthropic.com](https://console.anthropic.com)
+- Voyage AI API key — get one at [dash.voyageai.com](https://dash.voyageai.com)
 
 ## Installation
 
@@ -20,7 +21,7 @@ RAG is a pattern where a language model answers questions using text retrieved f
 git clone https://github.com/jarekswierek/rag-cli-demo.git
 cd rag-cli-demo
 cp .env.example .env
-# open .env and set ANTHROPIC_API_KEY=your-actual-key
+# open .env and set ANTHROPIC_API_KEY and VOYAGE_API_KEY
 make install
 ```
 
@@ -38,6 +39,8 @@ make ingest PDF=docs/sample.pdf
 make ask PDF=docs/sample.pdf Q="What are the main conclusions?"
 ```
 
+> `ask.py` is not implemented yet — this command doesn't work yet.
+
 ## Example output
 
 ```text
@@ -45,22 +48,6 @@ Embedding chunk 1/23...
 Embedding chunk 2/23...
 ...
 Done. Stored 23 chunks from 8 pages into ./chroma_store/
-```
-
-```text
-Context used to answer:
-[1] Page 3: "The study found that retrieval-augmented models outperform
-    fine-tuned baselines on open-domain QA tasks by a margin of 12%..."
-[2] Page 5: "Key limitations include latency introduced by the retrieval
-    step and sensitivity to chunk size during indexing..."
-[3] Page 7: "Authors recommend a chunk size of 512–1024 tokens with a
-    20% overlap to balance context coherence and retrieval precision..."
----
-Answer:
-The main conclusions are that RAG models significantly outperform fine-tuned
-baselines on open-domain QA, though practitioners must account for retrieval
-latency and tune chunk size carefully — the authors recommend 512–1024 tokens
-with ~20% overlap.
 ```
 
 ## How it works

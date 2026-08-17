@@ -1,5 +1,7 @@
 # rag-cli-demo
 
+> **Work in progress.** `ingest.py` (PDF parsing, chunking, embedding, and storage in ChromaDB) is in progress. `ask.py` (query pipeline with citations) is not yet implemented.
+
 An educational example of a Retrieval-Augmented Generation (RAG) pipeline in the terminal.
 
 ## What is this?
